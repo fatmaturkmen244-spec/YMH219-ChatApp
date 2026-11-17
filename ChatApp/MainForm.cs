@@ -84,13 +84,13 @@ public sealed class MainForm : Form
 
         Button btnNewClientWindow = new()
         {
-            Text = "➕ Yeni İstemci Penceresi Aç",
+            Text = "+ Yeni İstemci Aç",
             Font = new Font("Segoe UI Semibold", 9.2f, FontStyle.Bold),
             BackColor = Color.FromArgb(124, 58, 237),
             ForeColor = Color.White,
             FlatStyle = FlatStyle.Flat,
-            Location = new Point(768, 19),
-            Size = new Size(212, 36),
+            Location = new Point(790, 19),
+            Size = new Size(190, 36),
             Cursor = Cursors.Hand,
             TabStop = false
         };
@@ -122,10 +122,10 @@ public sealed class MainForm : Form
 
         Label lblServerTitle = new()
         {
-            Text = "🖥️  SUNUCU KONTROL MERKEZİ",
-            Font = new Font("Segoe UI", 10.2f, FontStyle.Bold),
+            Text = "SUNUCU KONTROL PANELİ",
+            Font = new Font("Segoe UI", 9.8f, FontStyle.Bold),
             ForeColor = Color.FromArgb(55, 48, 163),
-            Location = new Point(12, 11),
+            Location = new Point(12, 12),
             AutoSize = true
         };
         serverHeader.Controls.Add(lblServerTitle);
@@ -133,12 +133,12 @@ public sealed class MainForm : Form
         _lblServerStatus = new Label
         {
             Text = "● KAPALI",
-            Font = new Font("Segoe UI", 8.5f, FontStyle.Bold),
+            Font = new Font("Segoe UI", 8.2f, FontStyle.Bold),
             ForeColor = Color.FromArgb(153, 27, 27),
             BackColor = Color.FromArgb(254, 226, 226),
             TextAlign = ContentAlignment.MiddleCenter,
-            Location = new Point(268, 9),
-            Size = new Size(96, 26)
+            Location = new Point(252, 9),
+            Size = new Size(110, 26)
         };
         serverHeader.Controls.Add(_lblServerStatus);
 
@@ -156,15 +156,15 @@ public sealed class MainForm : Form
             Text = "5050",
             Font = new Font("Consolas", 10f),
             Location = new Point(56, 55),
-            Size = new Size(68, 26)
+            Size = new Size(64, 26)
         };
         serverCard.Controls.Add(_txtServerPort);
 
-        _btnStartServer = CreateStyledButton("▶ Sunucu Başlat", 132, 52, 114, 32, Color.FromArgb(16, 185, 129), Color.White);
+        _btnStartServer = CreateStyledButton("▶ Başlat", 128, 52, 114, 32, Color.FromArgb(16, 185, 129), Color.White);
         _btnStartServer.Click += (_, _) => HandleStartServer();
         serverCard.Controls.Add(_btnStartServer);
 
-        _btnStopServer = CreateStyledButton("■ Durdur", 252, 52, 108, 32, Color.FromArgb(239, 68, 68), Color.White);
+        _btnStopServer = CreateStyledButton("■ Durdur", 250, 52, 110, 32, Color.FromArgb(239, 68, 68), Color.White);
         _btnStopServer.Enabled = false;
         _btnStopServer.Click += (_, _) => HandleStopServer();
         serverCard.Controls.Add(_btnStopServer);
@@ -306,11 +306,11 @@ public sealed class MainForm : Form
         };
         clientCard.Controls.Add(_txtUsername);
 
-        _btnConnect = CreateStyledButton("🔗 Bağlan", 398, 52, 82, 31, Color.FromArgb(79, 70, 229), Color.White);
+        _btnConnect = CreateStyledButton("Bağlan", 398, 52, 82, 31, Color.FromArgb(79, 70, 229), Color.White);
         _btnConnect.Click += async (_, _) => await HandleConnectClientAsync();
         clientCard.Controls.Add(_btnConnect);
 
-        _btnDisconnect = CreateStyledButton("✖ Kes", 486, 52, 78, 31, Color.FromArgb(100, 116, 139), Color.White);
+        _btnDisconnect = CreateStyledButton("Kes", 486, 52, 78, 31, Color.FromArgb(100, 116, 139), Color.White);
         _btnDisconnect.Enabled = false;
         _btnDisconnect.Click += async (_, _) => await HandleDisconnectClientAsync();
         clientCard.Controls.Add(_btnDisconnect);
@@ -326,7 +326,7 @@ public sealed class MainForm : Form
         };
         clientCard.Controls.Add(lblMessagesHeader);
 
-        _btnSaveHistory = CreateStyledButton("💾 Sohbeti .TXT Kaydet", 412, 92, 152, 24, Color.FromArgb(14, 165, 233), Color.White);
+        _btnSaveHistory = CreateStyledButton("💾 .TXT Kaydet", 434, 92, 130, 24, Color.FromArgb(14, 165, 233), Color.White);
         _btnSaveHistory.Font = new Font("Segoe UI", 8.2f, FontStyle.Bold);
         _btnSaveHistory.Click += (_, _) => HandleSaveHistory();
         clientCard.Controls.Add(_btnSaveHistory);
@@ -346,7 +346,7 @@ public sealed class MainForm : Form
         // Hedef Seçimi (Genel Oda veya Özel Mesaj) ve Mesaj Gönderim Alanı
         Label lblTarget = new()
         {
-            Text = "Alıcı (Genel / Özel Mesaj):",
+            Text = "Mesaj Alıcısı:",
             Font = new Font("Segoe UI Semibold", 8.8f, FontStyle.Bold),
             ForeColor = Color.FromArgb(71, 85, 105),
             Location = new Point(14, 456),
@@ -358,8 +358,8 @@ public sealed class MainForm : Form
         {
             DropDownStyle = ComboBoxStyle.DropDownList,
             Font = new Font("Segoe UI", 9f),
-            Location = new Point(178, 452),
-            Size = new Size(195, 26)
+            Location = new Point(112, 452),
+            Size = new Size(210, 26)
         };
         _cmbRecipient.Items.Add("Herkes");
         _cmbRecipient.SelectedIndex = 0;
